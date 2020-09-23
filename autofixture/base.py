@@ -3,7 +3,6 @@ import warnings
 from django.db.models import fields, ImageField
 from django.conf import settings
 from django.db.models.fields import related
-from django.utils.six import with_metaclass
 
 import autofixture
 from autofixture import constraints, generators, signals
@@ -570,5 +569,5 @@ class AutoFixtureBase(object):
         yield self.create_one()
 
 
-class AutoFixture(with_metaclass(AutoFixtureMetaclass, AutoFixtureBase)):
+class AutoFixture(AutoFixtureBase, metaclass=AutoFixtureMetaclass):
     pass
